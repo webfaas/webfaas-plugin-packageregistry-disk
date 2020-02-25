@@ -1,0 +1,15 @@
+{
+    "core":{
+        "log":{
+            "level":"INFO"
+        }
+    },
+    "registry":{
+        "disk": [
+            {
+                "name": "disk2",
+                "base": "/tmp/disk2"
+            }
+        ]
+    }
+}
