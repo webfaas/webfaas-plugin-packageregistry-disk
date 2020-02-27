@@ -31,11 +31,11 @@ import { PackageRegistryConfig } from "../lib/PackageRegistryConfig";
 
 var moduleManager = new ModuleManager();
 var foldeTarball = path.join(__dirname.substring(0, __dirname.length - "examples".length), "test/data/data-package");
-moduleManager.getPackageStoreManager().getPackageRegistryManager().addRegistry("disk", "", new PackageRegistry(new PackageRegistryConfig(foldeTarball)));
+moduleManager.getModuleManagerImport().getPackageStoreManager().getPackageRegistryManager().addRegistry("disk", "", new PackageRegistry(new PackageRegistryConfig(foldeTarball)));
 
 (async function(){
     try {
-        var moduleObj: any = await moduleManager.import("@webfaaslabs/mathsum", "0.0.1", undefined, "disk");
+        var moduleObj: any = await moduleManager.getModuleManagerImport().import("@webfaaslabs/mathsum", "0.0.1", undefined, "disk");
         
         if (moduleObj){
             console.log("module loaded", moduleObj);
