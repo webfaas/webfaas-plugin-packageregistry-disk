@@ -1,12 +1,9 @@
 import * as chai from "chai";
-import * as mocha from "mocha";
-
-import * as fs from "fs";
-import * as path from "path";
 
 import { Core, LogLevelEnum } from "@webfaas/webfaas-core";
 
 import WebFassPlugin from "../lib/WebFassPlugin";
+import { Config } from "@webfaas/webfaas-core/lib/Config/Config";
 
 describe("Plugin", () => {
     it("start and stop - new", async function(){
@@ -19,11 +16,20 @@ describe("Plugin", () => {
         await plugin.stopPlugin(core); //retry stop
 
         //config
-        (<NodeModule> require.main).filename = path.join(__dirname, "./data/-data-config");
-        let core2 = new Core();
+        let configData = {
+            "registry":{
+                "disk": [
+                    {
+                        "name": "disk2",
+                        "base": "/tmp/disk2"
+                    }
+                ]
+            }
+        }
+        let core2 = new Core( new Config(configData) );
         let plugin2 = new WebFassPlugin(core2);
         core2.getLog().changeCurrentLevel(LogLevelEnum.OFF);
-        chai.expect(core2.getModuleManager().getModuleManagerImport().getPackageStoreManager().getPackageRegistryManager().getRegistryItem("disk2")).to.not.null;
-        chai.expect(core2.getModuleManager().getModuleManagerImport().getPackageStoreManager().getPackageRegistryManager().getRegistryItem("disk2")?.name).to.eq("disk2");
+        chai.expect(core2.getPackageRegistryManager().getRegistryItem("disk2")).to.not.null;
+        chai.expect(core2.getPackageRegistryManager().getRegistryItem("disk2")?.name).to.eq("disk2");
     })
 })

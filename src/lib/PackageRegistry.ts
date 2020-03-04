@@ -3,7 +3,7 @@ import * as path from "path";
 
 import { Log, WebFaasError } from "@webfaas/webfaas-core";
 import { IPackageRegistry, IPackageRegistryResponse } from "@webfaas/webfaas-core";
-import { PackageStoreUtil, PackageStore, IPackageStoreItemData } from "@webfaas/webfaas-core";
+import { PackageStoreUtil } from "@webfaas/webfaas-core";
 import { ModuleNameUtil } from "@webfaas/webfaas-core";
 
 import { PackageRegistryConfig } from "./PackageRegistryConfig";

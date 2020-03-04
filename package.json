@@ -1,6 +1,6 @@
 {
   "name": "@webfaas/webfaas-plugin-packageregistry-disk",
-  "version": "0.1.0-alpha2",
+  "version": "0.1.0",
   "description": "WebFaaS Framework - Plugin - Package Registry - Disk",
   "main": "lib/index.js",
   "readmeFilename": "README.md",
@@ -19,8 +19,7 @@
     "publish_npm": "cd dist && npm publish --access public",
     "pack": "npm pack dist",
     "buildAndTest": "npm run build && npm run test:coverage",
-    "setnpmtokenAndPublish": "npm run setnpmtoken && npm run publish_npm",
-    "sonar": "node scripts/sonar-project.js"
+    "setnpmtokenAndPublish": "npm run setnpmtoken && npm run publish_npm"
   },
   "repository": {
     "type": "git",
@@ -29,15 +28,14 @@
   "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2",
-    "@types/mocha": "^5.2",
-    "@types/node": "^13.1",
-    "typescript": "^3.7",
+    "@types/mocha": "^7.0",
+    "@types/node": "^13.7",
     "chai": "^4.2",
-    "mocha": "^6.2",
+    "mocha": "^7.1",
     "nyc": "^15.0",
+    "typescript": "^3.8",
     "typescript-tslint-plugin": "^0.5",
-    "sonarqube-scanner": "^2.5.0",
-    "@webfaas/webfaas-core": "^0.4"
+    "@webfaas/webfaas-core": "^0.6"
   },
   "engines": {
     "node": ">=10.0.0"
